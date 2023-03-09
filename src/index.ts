@@ -16,8 +16,12 @@ const client = new Client({
     intents: [F.Guilds, F.GuildMessages, F.GuildMembers, F.MessageContent]
 })
 
-app.get('/', async (req, res) => {
+app.get('/api', async (req, res) => {
     res.status(200).send({count: amount, Headers: {"Access-Control-Allow-Origin": "*"}});
+})
+
+app.get('/', (req, res) => {
+    res.send("sussy baka")
 })
 
 let amount = 0;
