@@ -1,6 +1,8 @@
 import { Client, GuildMember, IntentsBitField, PartialGuildMember} from 'discord.js';
 import * as path from 'path';
 import express from 'express';
+import cors from 'cors';
+
 
 const app = express();
 
@@ -53,10 +55,4 @@ app.listen('6584');
 
 
 
-
-
-
-function cors(): any {
-    throw new Error('Function not implemented.');
-}
 
