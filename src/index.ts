@@ -8,6 +8,7 @@ require('dotenv').config({
     path: path.join(__dirname, ".env")
 })
 
+app.use(cors());
 
 
 
@@ -17,7 +18,7 @@ const client = new Client({
 })
 
 app.get('/api', async (req, res) => {
-    res.status(200).send({count: amount, Headers: {"Access-Control-Allow-Origin": "*"}});
+    res.status(200).send({count: amount});
 })
 
 app.get('/', (req, res) => {
@@ -54,4 +55,8 @@ app.listen('6584');
 
 
 
+
+function cors(): any {
+    throw new Error('Function not implemented.');
+}
 
