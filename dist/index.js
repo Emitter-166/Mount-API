@@ -33,12 +33,16 @@ const app = (0, express_1.default)();
 require('dotenv').config({
     path: path.join(__dirname, ".env")
 });
+app.use(cors());
 const F = discord_js_1.IntentsBitField.Flags;
 const client = new discord_js_1.Client({
     intents: [F.Guilds, F.GuildMessages, F.GuildMembers, F.MessageContent]
 });
-app.get('/', async (req, res) => {
+app.get('/api', async (req, res) => {
     res.status(200).send({ count: amount });
+});
+app.get('/', (req, res) => {
+    res.send("sussy baka");
 });
 let amount = 0;
 client.on('guildMemberUpdate', async (old, newMember) => {
@@ -57,3 +61,6 @@ client.once('ready', async (client) => {
 });
 client.login(process.env._TOKEN);
 app.listen('6584');
+function cors() {
+    throw new Error('Function not implemented.');
+}
