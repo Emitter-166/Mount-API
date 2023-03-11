@@ -33,8 +33,8 @@ client.on('guildMemberUpdate', async (old , newMember) => {
     const nick_old = old.nickname?.toLocaleLowerCase();
     const nick_new = newMember.nickname?.toLocaleLowerCase();
     
-    if(nick_old?.startsWith('mount') && !(nick_new?.startsWith('mount'))) amount--;
-    if(nick_new?.startsWith('mount') && !(nick_old?.startsWith('mount'))) amount++;
+    if(nick_old?.includes('mount') && !(nick_new?.includes('mount'))) amount--;
+    if(nick_new?.includes('mount') && !(nick_old?.includes('mount'))) amount++;
 })
 
 
@@ -45,7 +45,7 @@ client.once('ready', async (client) => {
 
     const members = await guild.members.fetch();
 
-    amount += members.filter(member => member.nickname?.toLocaleLowerCase().startsWith('mount')).size
+    amount += members.filter(member => member.nickname?.toLocaleLowerCase().includes('mount')).size
 })
 
 client.login(process.env._TOKEN)

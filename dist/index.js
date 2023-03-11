@@ -29,11 +29,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const path = __importStar(require("path"));
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 require('dotenv').config({
     path: path.join(__dirname, ".env")
 });
-app.use(cors());
+app.use((0, cors_1.default)());
 const F = discord_js_1.IntentsBitField.Flags;
 const client = new discord_js_1.Client({
     intents: [F.Guilds, F.GuildMessages, F.GuildMembers, F.MessageContent]
@@ -61,6 +62,3 @@ client.once('ready', async (client) => {
 });
 client.login(process.env._TOKEN);
 app.listen('6584');
-function cors() {
-    throw new Error('Function not implemented.');
-}
